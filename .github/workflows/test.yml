@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main  # Change to your desired branch
+  schedule:
+#every 5 minutes
+  - cron: "*/5 * * * *"  # Change to your desired cron schedule
 
 jobs:
   test:
@@ -13,6 +16,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Run cleanup
+        run: chmod +x cleanup.sh && ./cleanup.sh
 
       - name: Set up Go
         uses: actions/setup-go@v4
