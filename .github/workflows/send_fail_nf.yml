@@ -7,7 +7,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Send notification
+      - name: Run tests
+        run: |
+          echo "Test failed"
+          exit 1
+      - name: Send notification to slack on failure
+        if: ${{ failure() }} # Only execute if job fails
         uses: rtCamp/action-slack-notify@master
         env:
           SLACK_WEBHOOK: ${{ secrets.webhook_url }}
