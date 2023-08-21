@@ -16,5 +16,7 @@ jobs:
           run: echo "rm file.txt" > cleanup.sh
         - name: Run cleanup
           run: chmod +x cleanup.sh && ./cleanup.sh
+        - name: check if file exists
+          run: ls
   
           
