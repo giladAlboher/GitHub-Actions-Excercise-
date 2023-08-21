@@ -1,0 +1,28 @@
+name: Continuous Deployment to AWS
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.aws_access_key_id }}
+          aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
+          aws-region: us-east-1  # Change this to your desired AWS region
+
+      - name: Deploy to AWS
+        run: |
+          # Replace this with the commands to deploy your application to AWS
+          # For example, if using Elastic Beanstalk:
+          # aws elasticbeanstalk create-application-version --application-name YourApp --version-label $GITHUB_SHA --source-bundle S3Bucket=$S3_BUCKET,S3Key=$GITHUB_SHA.zip
+          # aws elasticbeanstalk update-environment --environment-name YourEnvironment --version-label $GITHUB_SHA

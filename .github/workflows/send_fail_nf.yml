@@ -1,0 +1,16 @@
+#sends notification to the user on slack when the test.yml fails the test
+name: send_faild_nf
+on: [push]
+jobs:
+  send_faild_nf:
+    runs-on: ubuntu-latestsss
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Send notification
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.webhook_url }}
+          SLACK_MESSAGE: "Test failed"
+          SLACK_COLOR: "#ff0000"
+          SLACK_TITLE: "Test failed"
