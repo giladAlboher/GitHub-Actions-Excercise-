@@ -17,9 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run cleanup
-        run: chmod +x cleanup.sh && ./cleanup.sh
-
       - name: Set up Go
         uses: actions/setup-go@v4
         with:
