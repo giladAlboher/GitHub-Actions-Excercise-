@@ -1,2 +1,2 @@
-#this wiil delete a file called test.txt
-rm test.txt
+#this wiil delete a file called text.txt
+rm text.txt
