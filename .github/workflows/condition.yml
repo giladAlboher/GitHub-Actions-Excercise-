@@ -1,0 +1,16 @@
+# on push touch fofo.txt and echo inside fofo.txt the date and time
+name: condition
+on:
+  push:
+    paths:
+      - fofo.txt
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - name: touch fofo.txt
+          run: |
+            touch fofo.txt
+        - name: echo date and time
+          run: |
+            echo $(date) >> fofo.txt
