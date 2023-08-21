@@ -10,7 +10,10 @@ jobs:
       steps:
         - name: Checkout code
           uses: actions/checkout@v3
-  
+        - name: add a file to be deleted
+          run: touch file.txt
+        - name: add a script to delete the file
+          run: echo "rm file.txt" > cleanup.sh
         - name: Run cleanup
           run: chmod +x cleanup.sh && ./cleanup.sh
   
