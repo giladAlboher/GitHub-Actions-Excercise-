@@ -15,7 +15,7 @@ jobs:
         - name: check what files are in the directory
           run: ls
         - name: add a script to delete the file
-          run: echo "rm file.txt" > cleanup.sh
+          run: echo "rm file.txt" >> cleanup.sh
         - name: Run cleanup
           run: chmod +x cleanup.sh && ./cleanup.sh
         - name: check if file exists
