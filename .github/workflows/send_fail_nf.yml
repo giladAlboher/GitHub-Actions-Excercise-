@@ -10,7 +10,7 @@ jobs:
     #   - name: Run tests
     #     run: |
     #       echo "Test failed"
-    #       exit 0
+    #       exit 1
       - name: Send notification to slack on failure
         if: ${{ failure() }} # Only execute if job fails
         uses: rtCamp/action-slack-notify@master
