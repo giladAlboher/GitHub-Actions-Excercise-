@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
@@ -20,9 +20,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: us-east-1  # Change this to your desired AWS region
 
-      - name: Deploy to AWS
+      - name: Deploy to Amazon ECR
         run: |
-         aws ec2 run-instances \
-         --image-id ami-08a52ddb321b32a8c \  # Replace with the actual AMI ID
-         --instance-type t2.micro
-         
+          aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 525806118612.dkr.ecr.us-east-1.amazonaws.com
+          docker build -t go-app .
+          docker tag go-app:latest 525806118612.dkr.ecr.us-east-1.amazonaws.com/go-app:latest
+          docker push 525806118612.dkr.ecr.us-east-1.amazonaws.com/go-app:latest

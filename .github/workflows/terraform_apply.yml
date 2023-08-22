@@ -31,5 +31,7 @@ jobs:
       - name: Terraform apply
         run: terraform apply -auto-approve
 
-    #   - name: Cleanup
-    #     run: rm -rf .terraform
+      - name: Cleanup
+        run: |
+         terraform destroy -auto-approve 
+         rm -rf .terraform
