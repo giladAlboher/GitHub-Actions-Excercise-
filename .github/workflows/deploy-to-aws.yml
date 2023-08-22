@@ -22,7 +22,7 @@ jobs:
 
       - name: Deploy to AWS
         run: |
-          # Replace this with the commands to deploy your application to AWS
-          # For example, if using Elastic Beanstalk:
-          # aws elasticbeanstalk create-application-version --application-name YourApp --version-label $GITHUB_SHA --source-bundle S3Bucket=$S3_BUCKET,S3Key=$GITHUB_SHA.zip
-          # aws elasticbeanstalk update-environment --environment-name YourEnvironment --version-label $GITHUB_SHA
+         aws ec2 run-instances \
+         --image-id ami-08a52ddb321b32a8c \  # Replace with the actual AMI ID
+         --instance-type t2.micro
+         
